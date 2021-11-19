@@ -37,4 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: Helvetica, sans-serif;
     font-weight: bold;
   }
+  a{
+    text-decoration: none;
+  }
 `
