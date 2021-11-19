@@ -2,17 +2,21 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 width: 100%;
-height: 100%;
+height: 100vh;
+background: ${({theme}) => theme.background};
 `
 
 export const CardDiv = styled.div`
+margin-top: 40px;
+height: 868.69px;
+background: ${({theme}) => theme.background};
 display: flex;
-align-items: center;
-justify-content: space-evenly;
-padding: 50px 24px 60px;
+flex-direction: row;
+align-items: flex-start;
+justify-content: center;
+
 `;
 
-export const Text = styled.h1``
-
 export const FooterDiv = styled.div`
+background: ${({theme}) => theme.background};
 `;

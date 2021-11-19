@@ -1,9 +1,11 @@
 import { Footer } from "../../components/Footer";
 import {  Header } from "../../components/Header";
+import { LeftCard } from "../../components/LeftCard";
+import { RightCard } from "../../components/RightCard";
 import {
 Container,
 CardDiv,
-Text,
+FooterDiv,
 } from './styles';
 
 export function Dashboard(){
@@ -11,10 +13,12 @@ export function Dashboard(){
         <Container>
             <Header/>
             <CardDiv>
-                        <Text>ola</Text>
-                        <Text>bola</Text>
+                        <LeftCard/>
+                        <RightCard/>
             </CardDiv>
+            <FooterDiv>
             <Footer/>
+            </FooterDiv>
         </Container>
     );
 }
