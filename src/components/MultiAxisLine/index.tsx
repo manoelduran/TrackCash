@@ -3,7 +3,7 @@ import {Container} from './styles';
 const data = {
   labels: ['1', '2', '3', '4', '5', '6'],
   datasets: [
-    {
+    /*{
       label: 'Número de Vendas',
       data: [],
       fill: false,
@@ -19,6 +19,7 @@ const data = {
       borderColor: 'rgba(54, 162, 235, 0.2)',
       yAxisID: 'y-axis-2',
     },
+    */
   ], 
 };
 
