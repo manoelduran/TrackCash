@@ -1,3 +1,4 @@
+import MultiAxisLine from '../MultiAxisLine';
 import {
     Container,
     Header,
@@ -20,6 +21,14 @@ import {
     IconRight,
     TaxValueRight,
     TaxSpanRight,
+    BreakLine,
+    SecondDiv,
+    Left,
+    ValueLeft,
+    SpanLeft,
+    Right,
+    ValueRight,
+    SpanRight,
 } from './styles';
 
 export function LeftCard() {
@@ -29,7 +38,7 @@ export function LeftCard() {
                 <HeaderTitle>Desempenho Mensal e Diário</HeaderTitle>
             </Header>
             <GraphicDiv>
-                <Text>GRAFICO</Text>
+                <MultiAxisLine/>
                 <LegendDiv>
                     <LeftLegend>
                         <LeftColor />
@@ -53,6 +62,19 @@ export function LeftCard() {
                     <TaxSpanRight>Taxa de aprovação dos pedidos</TaxSpanRight>
                 </TaxRight>
             </TaxDiv>
+            <BreakLine/>
+            <SecondDiv>
+            <Left>
+                    <IconLeft  src="/list.png"/>
+                    <ValueLeft>98</ValueLeft>
+                    <SpanLeft>Pedidos aprovados na data de hoje</SpanLeft>
+                </Left>
+                <Right>
+                    <IconRight src="dollar.png"/>
+                    <ValueRight>7,78%</ValueRight>
+                    <SpanRight>Total de vendas do dia (R$)</SpanRight>
+                </Right>
+            </SecondDiv>
         </Container>
     );
 }

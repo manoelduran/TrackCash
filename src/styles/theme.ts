@@ -14,6 +14,7 @@ const theme = {
   danger: '#C0392B',
   blueDark: '#34495E',
   greenDark: '#229954',
+  breakLine: '#C4C4C4',
 };
 
 export default theme;

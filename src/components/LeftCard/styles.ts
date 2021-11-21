@@ -8,7 +8,7 @@ width: 634px;
 height: 820.69px;
 background: ${({theme}) => theme.white};
 filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3));
-border-radius: 8px 8px 0px 0px;
+border-radius: 8px;
 `;
 
 export const Header = styled.div`
@@ -102,29 +102,160 @@ line-height: 16px;
 
 
 export const TaxDiv = styled.div`
-
+margin-top: 65px;
+margin-left: 111px;
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+width: 412px;
+height: 139px;
 `;
 export const TaxLeft = styled.div`
-
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 191px;
+height: 139px;
 `;
 export const IconLeft = styled.img`
+width: 36px;
+height: 36px;
 
 `;
 export const TaxValueLeft = styled.h1`
-
+margin-top: 19px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 34px;
+line-height: 39px;
+color: ${({theme}) => theme.blue};
+text-align: center;
 `;
 export const TaxSpanLeft = styled.span`
-
+margin-top: 16px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+color: ${({theme}) => theme.dark};
 `;
 export const TaxRight = styled.div`
-
+margin-left: 30px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 191px;
+height: 139px;
 `;
 export const IconRight = styled.img`
-
+width: 36px;
+height: 36px;
 `;
 export const TaxValueRight = styled.h1`
-
+margin-top: 19px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 34px;
+line-height: 39px;
+color: ${({theme}) => theme.green};
+text-align: center;
 `;
 export const TaxSpanRight = styled.span`
+margin-top: 16px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+color: ${({theme}) => theme.dark};
+`;
 
+export const BreakLine = styled.div`
+margin-left: 24px;
+margin-top: 60px;
+position: static;
+width: 586px;
+height: 1px;
+background: ${({theme}) => theme.breakLine};
+`;
+
+export const SecondDiv = styled.div`
+margin-top: 60px;
+margin-left: 111px;
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+width: 412px;
+height: 139px;
+`;
+
+export const Left = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: static;
+width: 191px;
+height: 139px;
+`;
+
+export const ValueLeft = styled.div`
+color: ${({theme}) => theme.blue};
+margin-top: 20px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 34px;
+line-height: 39px;
+text-align: center;
+`;
+export const SpanLeft = styled.div`
+color: ${({theme}) => theme.dark};
+margin-top: 16px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+`;
+export const Right = styled.div`
+margin-top: -5px;
+margin-left: 30px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: static;
+width: 191px;
+height: 139px;
+`;
+export const ValueRight = styled.div`
+margin-top: 20px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 34px;
+line-height: 39px;
+text-align: center;
+color: ${({theme}) => theme.green};
+`;
+export const SpanRight = styled.div`
+margin-top: 16px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
+text-align: center;
+color: ${({theme}) => theme.dark};
 `;

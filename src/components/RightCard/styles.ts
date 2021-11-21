@@ -5,6 +5,8 @@ margin-left: 30px;
 width: 634px;
 height: 820.69px;
 background: ${({theme}) => theme.white};
+filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3));
+border-radius: 8px;
 `;
 
 export const Header = styled.div`
