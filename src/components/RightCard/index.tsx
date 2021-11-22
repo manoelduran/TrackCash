@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { AiFillPlusSquare } from 'react-icons/ai';
+import { AuthContext } from '../../contexts/AuthContext';
 import { CompanyContext } from '../../contexts/CompanyContext';
 import { Modal } from '../Modal';
 
@@ -33,7 +34,8 @@ import {
 } from './styles';
 
 export function RightCard() {
-    const {  handleOpenModal, isModalVisible } = useContext(CompanyContext)
+    const { handleOpenModal, isModalVisible } = useContext(CompanyContext);
+    const {currentUser} = useContext(AuthContext)
     return (
         <>
             {isModalVisible ? <Modal />
@@ -44,7 +46,7 @@ export function RightCard() {
                     </Header>
                     <CardDiv>
                         <Icon src="dollar.png" />
-                        <Value>7,48%</Value>
+                        <Value>{currentUser?.data[0].Total.current_balance}</Value>
                         <Span>Total líquido (R$)</Span>
                     </CardDiv>
                     <ModalsDiv>
@@ -68,36 +70,36 @@ export function RightCard() {
                         </ModalDivRight>
                     </ModalsDiv>
                     <BreakLine />
-                    <TransactionsData>
-                        <TransactionLeft>
-                            <LeftTransactionValue>225,20</LeftTransactionValue>
-                            <LeftTransactionTitle>Retiradas (R$)</LeftTransactionTitle>
-                        </TransactionLeft>
-                        <TransactionRight>
-                            <RightTransactionValue>982,01</RightTransactionValue>
-                            <RightTransactionTitle>Comissões (R$)</RightTransactionTitle>
-                        </TransactionRight>
-                    </TransactionsData>
-                    <TransactionsData>
-                        <TransactionLeft>
-                            <LeftTransactionValue>685,20</LeftTransactionValue>
-                            <LeftTransactionTitle>Antecipações (R$)</LeftTransactionTitle>
-                        </TransactionLeft>
-                        <TransactionRight>
-                            <RightTransactionValue>988,00</RightTransactionValue>
-                            <RightTransactionTitle>Frete do marketplace (R$)</RightTransactionTitle>
-                        </TransactionRight>
-                    </TransactionsData>
-                    <TransactionsData>
-                        <TransactionLeft>
-                            <LeftTransactionValue>208,38</LeftTransactionValue>
-                            <LeftTransactionTitle>Pagamentos totais (R$)</LeftTransactionTitle>
-                        </TransactionLeft>
-                        <TransactionRight>
-                            <RightTransactionValue>540,41</RightTransactionValue>
-                            <RightTransactionTitle>Devoluções e cancelamentos (R$)</RightTransactionTitle>
-                        </TransactionRight>
-                    </TransactionsData>
+                            <TransactionsData>
+                                <TransactionLeft>
+                                    <LeftTransactionValue>{currentUser?.data[0].Total.withdrawals}</LeftTransactionValue>
+                                    <LeftTransactionTitle>Retiradas (R$)</LeftTransactionTitle>
+                                </TransactionLeft>
+                                <TransactionRight>
+                                    <RightTransactionValue>{currentUser?.data[0].Total.comissions}</RightTransactionValue>
+                                    <RightTransactionTitle>Comissões (R$)</RightTransactionTitle>
+                                </TransactionRight>
+                            </TransactionsData>
+                            <TransactionsData>
+                                <TransactionLeft>
+                                    <LeftTransactionValue>{currentUser?.data[0].Total.anticipations}</LeftTransactionValue>
+                                    <LeftTransactionTitle>Antecipações (R$)</LeftTransactionTitle>
+                                </TransactionLeft>
+                                <TransactionRight>
+                                    <RightTransactionValue>{currentUser?.data[0].Total.shipping}</RightTransactionValue>
+                                    <RightTransactionTitle>Frete do marketplace (R$)</RightTransactionTitle>
+                                </TransactionRight>
+                            </TransactionsData>
+                            <TransactionsData>
+                                <TransactionLeft>
+                                    <LeftTransactionValue>{currentUser?.data[0].Total.total}</LeftTransactionValue>
+                                    <LeftTransactionTitle>Pagamentos totais (R$)</LeftTransactionTitle>
+                                </TransactionLeft>
+                                <TransactionRight>
+                                    <RightTransactionValue>{currentUser?.data[0].Total.refundeds}</RightTransactionValue>
+                                    <RightTransactionTitle>Devoluções e cancelamentos (R$)</RightTransactionTitle>
+                                </TransactionRight>
+                            </TransactionsData>
                 </Container>
             }
         </>

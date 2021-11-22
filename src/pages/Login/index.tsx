@@ -1,4 +1,5 @@
-import { FormEvent,  useContext,  useState } from 'react';
+import { stringify } from 'querystring';
+import { FormEvent,  useContext, useEffect, useState } from 'react';
 import {  useNavigate } from "react-router-dom";
 import { AuthContext } from '../../contexts/AuthContext';
 import {
@@ -33,8 +34,7 @@ export function Login() {
     event.preventDefault();
     try{
       await fetchCurrentUser(username, password)
-      console.log(username, password)
-      navigate('/Dashboard');
+      navigate('Dashboard')
     } catch(err){
       alert('Usuário não encontrado!')
     }

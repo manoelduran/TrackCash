@@ -15,6 +15,15 @@ height: 30px;
 margin-left: 34px;
 border: none;
 `;
+export const Button = styled.button`
+width: 26px;
+height: 26px;
+margin-right: 34px;
+border-radius: 50%;
+border: none;
+background: ${({theme}) => theme.white};
+cursor: pointer;
+`;
 export const User = styled.img`
 width: 26px;
 height: 26px;
@@ -22,6 +31,7 @@ margin-right: 34px;
 border-radius: 50%;
 border: none;
 background: ${({theme}) => theme.white};
+cursor: pointer;
 `;
 
 export const OrangeContainer = styled.div`

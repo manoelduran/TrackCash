@@ -11,7 +11,8 @@ export async function login(username: string, password: string): Promise<User> {
             token: new Buffer(data).toString("base64"),
         }
     });
-    return result.data.response;
+    console.log(result.data)
+    return result.data
   }
 
   // return !(result.data.response && result.data.response.contains("Inválido")); //
