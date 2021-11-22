@@ -53,7 +53,7 @@ interface User {
     }
 }
 
-interface UserChannels{
+interface Channels{
     balances_total: number,
     balances_marketplaces: [
         { 
