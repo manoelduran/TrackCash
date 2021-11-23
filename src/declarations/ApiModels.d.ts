@@ -1,4 +1,8 @@
 interface User {
+    token: string;
+}
+
+interface Payments {
     data: [
         {
             Total: {
@@ -17,5 +21,10 @@ interface User {
 
 interface Channels {
     balances_total: number,
-    balances_marketplaces: [],
+    balances_marketplaces: {
+        [key: string]: {
+            mkp_total: string;
+            mkp_name: string;
+        }
+    },
 }

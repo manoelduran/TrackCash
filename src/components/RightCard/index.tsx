@@ -33,14 +33,21 @@ import {
 } from './styles';
 
 export function RightCard() {
-    const { currentUser, handleOpenModal, isModalVisible, fetchMarketTotalizer, username, password } = useContext(AuthContext)
+    const { handleOpenModal, isModalVisible, fetchMarketTotalizer, fetchPayments, payments } = useContext(AuthContext);
     useEffect(() => {
         try {
-            fetchMarketTotalizer(username, password)
+            fetchPayments()
         } catch (err) {
             alert(err)
         }
-    }, [ username, password])
+    }, [])
+    useEffect(() => {
+        try {
+            fetchMarketTotalizer()
+        } catch (err) {
+            alert(err)
+        }
+    }, [])
     return (
         <>
             {isModalVisible ? <Modal />
@@ -51,7 +58,7 @@ export function RightCard() {
                     </Header>
                     <CardDiv>
                         <Icon src="dollar.png" />
-                        <Value>{currentUser?.data[0].Total.current_balance}</Value>
+                        <Value>{payments?.data?.[0]?.Total.current_balance}</Value>
                         <Span>Total líquido (R$)</Span>
                     </CardDiv>
                     <ModalsDiv>
@@ -77,31 +84,31 @@ export function RightCard() {
                     <BreakLine />
                     <TransactionsData>
                         <TransactionLeft>
-                            <LeftTransactionValue>{currentUser?.data[0].Total.withdrawals}</LeftTransactionValue>
+                            <LeftTransactionValue>{payments?.data?.[0]?.Total.withdrawals}</LeftTransactionValue>
                             <LeftTransactionTitle>Retiradas (R$)</LeftTransactionTitle>
                         </TransactionLeft>
                         <TransactionRight>
-                            <RightTransactionValue>{currentUser?.data[0].Total.comissions}</RightTransactionValue>
+                            <RightTransactionValue>{payments?.data?.[0]?.Total.comissions}</RightTransactionValue>
                             <RightTransactionTitle>Comissões (R$)</RightTransactionTitle>
                         </TransactionRight>
                     </TransactionsData>
                     <TransactionsData>
                         <TransactionLeft>
-                            <LeftTransactionValue>{currentUser?.data[0].Total.anticipations}</LeftTransactionValue>
+                            <LeftTransactionValue>{payments?.data?.[0]?.Total.anticipations}</LeftTransactionValue>
                             <LeftTransactionTitle>Antecipações (R$)</LeftTransactionTitle>
                         </TransactionLeft>
                         <TransactionRight>
-                            <RightTransactionValue>{currentUser?.data[0].Total.shipping}</RightTransactionValue>
+                            <RightTransactionValue>{payments?.data?.[0]?.Total.shipping}</RightTransactionValue>
                             <RightTransactionTitle>Frete do marketplace (R$)</RightTransactionTitle>
                         </TransactionRight>
                     </TransactionsData>
                     <TransactionsData>
                         <TransactionLeft>
-                            <LeftTransactionValue>{currentUser?.data[0].Total.total}</LeftTransactionValue>
+                            <LeftTransactionValue>{payments?.data?.[0]?.Total.total}</LeftTransactionValue>
                             <LeftTransactionTitle>Pagamentos totais (R$)</LeftTransactionTitle>
                         </TransactionLeft>
                         <TransactionRight>
-                            <RightTransactionValue>{currentUser?.data[0].Total.refundeds}</RightTransactionValue>
+                            <RightTransactionValue>{payments?.data?.[0]?.Total.refundeds}</RightTransactionValue>
                             <RightTransactionTitle>Devoluções e cancelamentos (R$)</RightTransactionTitle>
                         </TransactionRight>
                     </TransactionsData>

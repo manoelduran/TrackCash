@@ -29,16 +29,20 @@ export function Login() {
   const navigate = useNavigate();
   const {fetchCurrentUser, username, password, setUsername, setPassword, isLoading, setIsLoading} = useContext(AuthContext)
 
-
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
     setIsLoading(true)
     try{
-      await fetchCurrentUser(username, password)
-      setIsLoading(false)
+      const user = await fetchCurrentUser(username, password);
+      
+      if (!user) {
+        throw new Error("Usuário não encontrado");
+      }
+
       navigate('Dashboard')
-    } catch(err){
-      alert('Usuário não encontrado!')
+    } catch(err: any){
+      alert(err.message);
+    } finally {
       setIsLoading(false)
     }
   }

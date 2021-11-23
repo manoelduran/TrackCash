@@ -3,32 +3,56 @@ const client = axios.create({
     baseURL: 'https://sistema.trackcash.com.br/'
 });
 
-export async function login(username: string, password: string): Promise<User> {
+export async function login(username: string, password: string): Promise<User | null> {
     const data = `${username}:${password}`;
+    const token = new Buffer(data).toString("base64");
     
     const result = await client.get(`/api/payments`, {
         headers: {
-            token: new Buffer(data).toString("base64"),
+            token,
         }
     });
+
+    if (result.data.response?.includes("Inválido")) {
+        return null;
+    }
+
+    return { token };
+  }
+
+  export async function getPayments(token: string): Promise<Payments | null>{
+    const result = await client.get(`/api/payments`, {
+        headers: {
+            token,
+        },
+        params: {
+            date_start: "01-01-2020",
+            date_end: "31-12-2021",
+        }
+    });
+    if (!result.data) {
+        return null;
+    }
 
     return result.data;
   }
 
-  export async function getMarketTotalizers(username: string, password: string): Promise<Channels>{
-    const data = `${username}:${password}`;
-
+  export async function getMarketTotalizers(token: string): Promise<Channels | null>{
     const result = await client.get(`/api/auth/payments/mkptotalizers`, {
         headers: {
-            token: new Buffer(data).toString("base64"),
+            token,
         },
         params: {
             id_store: 2,
-            date_start: "dd-mm-YYYY",
-            date_end: "dd-mm-YYYY",
+            date_start: "01-01-2020",
+            date_end: "31-12-2021",
         }
     });
-    console.log(result);
+
+    if (!result.data) {
+        return null;
+    }
+
     return result.data;
   }
 

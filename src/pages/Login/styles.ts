@@ -136,7 +136,6 @@ left: 5%;
 right: 5%;
 top: 5%;
 bottom: 5%;
-
 `;
 
 export const RememberSpan = styled.span`
