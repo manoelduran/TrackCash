@@ -1,6 +1,7 @@
-import { stringify } from 'querystring';
-import { FormEvent,  useContext, useEffect, useState } from 'react';
+
+import { FormEvent,  useContext } from 'react';
 import {  useNavigate } from "react-router-dom";
+import { Loading } from '../../components/Loading';
 import { AuthContext } from '../../contexts/AuthContext';
 import {
   Container,
@@ -26,17 +27,19 @@ import {
 
 export function Login() {
   const navigate = useNavigate();
-  const {fetchCurrentUser} = useContext(AuthContext)
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const {fetchCurrentUser, username, password, setUsername, setPassword, isLoading, setIsLoading} = useContext(AuthContext)
+
 
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
+    setIsLoading(true)
     try{
       await fetchCurrentUser(username, password)
+      setIsLoading(false)
       navigate('Dashboard')
     } catch(err){
       alert('Usuário não encontrado!')
+      setIsLoading(false)
     }
   }
 
@@ -54,7 +57,7 @@ export function Login() {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-          <FormButton type="submit">Acessar o Sistema</FormButton>
+          {isLoading ? <Loading/> : <FormButton type="submit">Acessar o Sistema</FormButton>}
         </Form>
         <Footer>
           <RememberDiv>

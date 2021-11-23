@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import { CompanyContext } from '../../contexts/CompanyContext';
+import { AuthContext } from '../../contexts/AuthContext';
+
 import {
     Container,
     Header,
@@ -21,7 +22,7 @@ import {
 } from './styles';
 
 export function Modal() {
-    const {handleCloseModal} = useContext(CompanyContext)
+    const {handleCloseModal} = useContext(AuthContext)
     return (
         <Container>
             <Header>

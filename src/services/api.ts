@@ -11,8 +11,24 @@ export async function login(username: string, password: string): Promise<User> {
             token: new Buffer(data).toString("base64"),
         }
     });
-    console.log(result.data)
-    return result.data
+
+    return result.data;
   }
 
-  // return !(result.data.response && result.data.response.contains("Inválido")); //
+  export async function getMarketTotalizers(username: string, password: string): Promise<Channels>{
+    const data = `${username}:${password}`;
+
+    const result = await client.get(`/api/auth/payments/mkptotalizers`, {
+        headers: {
+            token: new Buffer(data).toString("base64"),
+        },
+        params: {
+            id_store: 2,
+            date_start: "dd-mm-YYYY",
+            date_end: "dd-mm-YYYY",
+        }
+    });
+    console.log(result);
+    return result.data;
+  }
+

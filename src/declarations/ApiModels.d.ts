@@ -17,12 +17,5 @@ interface User {
 
 interface Channels {
     balances_total: number,
-    balances_marketplaces: [
-        {
-            marketplace: {
-                mkp_total: number,
-                mkp_name: string,
-            }
-        }
-    ]
+    balances_marketplaces: [],
 }

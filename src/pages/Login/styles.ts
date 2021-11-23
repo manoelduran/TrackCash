@@ -59,12 +59,19 @@ align-items: center;
 padding: 8px 16px;
 border-radius: 4px;
 border: none;
+outline: none;
 background: ${({ theme }) => theme.background}  url("/email.png") no-repeat 97% 50%;
 position: static;
 width: 302px;
 height: 45px;
 left: 0px;
 top: 0px;
+&:hover{
+    border: 1px solid ${({theme}) => theme.orange};
+}
+&:focus{
+   outline: 1px solid ${({theme}) => theme.orange};
+}
 `;
 export const PasswordInput = styled.input`
 margin-top: 25px;
@@ -74,6 +81,7 @@ justify-content: center;
 align-items: center;
 padding: 8px 16px;
 border: none;
+outline: none;
 border-radius: 4px;
 background: ${({ theme }) => theme.background}  url("/lock.png") no-repeat 97% 50%;
 position: static;
@@ -81,6 +89,12 @@ width: 302px;
 height: 45px;
 left: 0px;
 top: 69px;
+&:hover{
+    border: 1px solid ${({theme}) => theme.orange};
+}
+&:focus{
+   outline: 1px solid ${({theme}) => theme.orange};
+}
 `;
 export const FormButton = styled.button`
 margin-top: 30px;
@@ -118,11 +132,11 @@ justify-content: center;
 `;
 
 export const Remember = styled.input`
-background: ${({ theme }) => theme.orange};
 left: 5%;
 right: 5%;
 top: 5%;
 bottom: 5%;
+
 `;
 
 export const RememberSpan = styled.span`
