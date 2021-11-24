@@ -1,4 +1,5 @@
-import { useContext, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext } from 'react';
 import { AiFillPlusSquare } from 'react-icons/ai';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Modal } from '../Modal';
@@ -32,25 +33,38 @@ import {
     RightTransactionTitle,
 } from './styles';
 
-export function RightCard() {
-    const { handleOpenModal, isModalVisible, fetchMarketTotalizer, fetchPayments, payments } = useContext(AuthContext);
-    useEffect(() => {
-        try {
-            fetchPayments()
-        } catch (err) {
-            alert(err)
-        }
-    }, [])
-    useEffect(() => {
-        try {
-            fetchMarketTotalizer()
-        } catch (err) {
-            alert(err)
-        }
-    }, [])
+interface RightCardProps {
+    payments_total: string;
+    name1: string;
+    value1: string;
+    name2: string;
+    value2: string;
+    withdrawals: string;
+    comissions: string;
+    anticipations: string;
+    shipping: string;
+    total: string;
+    refundeds: string;
+}
+
+export function RightCard({ name2,
+    value2,
+    name1,
+    value1,
+    anticipations,
+    comissions,
+    refundeds,
+    shipping,
+    total,
+    payments_total,
+    withdrawals }: RightCardProps) {
+    const { handleOpenModal,
+        isModalVisible,
+    } = useContext(AuthContext);
+
     return (
         <>
-            {isModalVisible ? <Modal />
+            {isModalVisible ? <Modal firstcompany={name1} secondcompany={name2} />
                 :
                 <Container>
                     <Header>
@@ -58,23 +72,23 @@ export function RightCard() {
                     </Header>
                     <CardDiv>
                         <Icon src="dollar.png" />
-                        <Value>{payments?.data?.[0]?.Total.current_balance}</Value>
+                        <Value>{payments_total}</Value>
                         <Span>Total líquido (R$)</Span>
                     </CardDiv>
                     <ModalsDiv>
                         <ModalDivLeft>
-                            <IconLeft src="leroy.png" alt="Leroy" />
+                            <IconLeft src="carrefour.svg" alt={name1} />
                             <LeftValueDiv>
-                                <LeftValue>9.370,73</LeftValue>
+                                <LeftValue>{value1}</LeftValue>
                                 <ButtonIconLeft onClick={handleOpenModal}>
                                     <AiFillPlusSquare size={13} />
                                 </ButtonIconLeft>
                             </LeftValueDiv>
                         </ModalDivLeft>
                         <ModalDivRight>
-                            <IconRight src="madeira.png" alt="Madeira Madeira" />
+                            <IconRight src="carrefour.svg" alt={name2} />
                             <RightValueDiv>
-                                <RightValue>2.160,60</RightValue>
+                                <RightValue>{value2}</RightValue>
                                 <ButtonIconRight onClick={handleOpenModal}>
                                     <AiFillPlusSquare size={13} />
                                 </ButtonIconRight>
@@ -84,31 +98,31 @@ export function RightCard() {
                     <BreakLine />
                     <TransactionsData>
                         <TransactionLeft>
-                            <LeftTransactionValue>{payments?.data?.[0]?.Total.withdrawals}</LeftTransactionValue>
+                            <LeftTransactionValue>{withdrawals}</LeftTransactionValue>
                             <LeftTransactionTitle>Retiradas (R$)</LeftTransactionTitle>
                         </TransactionLeft>
                         <TransactionRight>
-                            <RightTransactionValue>{payments?.data?.[0]?.Total.comissions}</RightTransactionValue>
+                            <RightTransactionValue>{comissions}</RightTransactionValue>
                             <RightTransactionTitle>Comissões (R$)</RightTransactionTitle>
                         </TransactionRight>
                     </TransactionsData>
                     <TransactionsData>
                         <TransactionLeft>
-                            <LeftTransactionValue>{payments?.data?.[0]?.Total.anticipations}</LeftTransactionValue>
+                            <LeftTransactionValue>{anticipations}</LeftTransactionValue>
                             <LeftTransactionTitle>Antecipações (R$)</LeftTransactionTitle>
                         </TransactionLeft>
                         <TransactionRight>
-                            <RightTransactionValue>{payments?.data?.[0]?.Total.shipping}</RightTransactionValue>
+                            <RightTransactionValue>{shipping}</RightTransactionValue>
                             <RightTransactionTitle>Frete do marketplace (R$)</RightTransactionTitle>
                         </TransactionRight>
                     </TransactionsData>
                     <TransactionsData>
                         <TransactionLeft>
-                            <LeftTransactionValue>{payments?.data?.[0]?.Total.total}</LeftTransactionValue>
+                            <LeftTransactionValue>{total}</LeftTransactionValue>
                             <LeftTransactionTitle>Pagamentos totais (R$)</LeftTransactionTitle>
                         </TransactionLeft>
                         <TransactionRight>
-                            <RightTransactionValue>{payments?.data?.[0]?.Total.refundeds}</RightTransactionValue>
+                            <RightTransactionValue>{refundeds}</RightTransactionValue>
                             <RightTransactionTitle>Devoluções e cancelamentos (R$)</RightTransactionTitle>
                         </TransactionRight>
                     </TransactionsData>

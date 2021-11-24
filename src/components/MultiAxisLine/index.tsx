@@ -1,5 +1,5 @@
 import { Line } from 'react-chartjs-2';
-import {Container} from './styles';
+import { Container } from './styles';
 const data = {
   labels: ['1', '2', '3', '4', '5', '6'],
   datasets: [
@@ -20,7 +20,7 @@ const data = {
       yAxisID: 'y-axis-2',
     },
     */
-  ], 
+  ],
 };
 
 const options = {
@@ -47,7 +47,7 @@ const options = {
 
 const MultiAxisLine = () => (
   <Container>
-    <Line data={data}  />
+    <Line data={data} />
   </Container>
 );
 

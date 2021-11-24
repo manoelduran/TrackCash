@@ -4,11 +4,10 @@ export const Container = styled.div`
 margin-left: 30px;
 width: 634px;
 height: 820.69px;
-background: ${({theme}) => theme.white};
+background: ${({ theme }) => theme.white};
 filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3));
 border-radius: 8px;
 `;
-
 export const Header = styled.div`
 display: flex;
 flex-direction: row;
@@ -20,7 +19,7 @@ width: 634px;
 height: 48px;
 left: 0px;
 top: 0px;
-background: ${({theme}) => theme.dark};
+background: ${({ theme }) => theme.dark};
 border-radius: 8px 8px 0px 0px;
 `;
 export const HeaderTitle = styled.div`
@@ -30,16 +29,15 @@ font-style: normal;
 font-weight: bold;
 font-size: 18px;
 line-height: 16px;
-color: ${({theme}) => theme.white};
+color: ${({ theme }) => theme.white};
 `;
-
 export const CardDiv = styled.div`
 margin-top: 50px;
 margin-left: 167px;
 width: 300px;
 height: 160px;
 border-radius: 12px;
-background: ${({theme}) => theme.green};
+background: ${({ theme }) => theme.green};
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -59,7 +57,7 @@ font-size: 34px;
 line-height: 39px;
 margin-top: 20px;
 text-align: center;
-color: ${({theme}) => theme.white};
+color: ${({ theme }) => theme.white};
 `;
 export const Span = styled.span`
 font-family: Ubuntu;
@@ -69,10 +67,8 @@ font-size: 14px;
 line-height: 16px;
 margin-top: 12px;
 text-align: center;
-color: ${({theme}) => theme.white};
+color: ${({ theme }) => theme.white};
 `;
-
-
 export const ModalsDiv = styled.div`
 display: flex;
 flex-direction: row;
@@ -93,16 +89,14 @@ width: 123px;
 height: 24px;
 box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
 border-radius: 8px;
-background: ${({theme}) => theme.white};
+background: ${({ theme }) => theme.white};
 `;
-
 export const IconLeft = styled.img`
 width: 24px;
 height: 24px;
 border-radius: 4px 0px 0px 4px;
-background: ${({theme}) => theme.white};
+background: ${({ theme }) => theme.white};
 `;
-
 export const LeftValueDiv = styled.div`
 display: flex;
 flex-direction: row;
@@ -112,7 +106,7 @@ padding: 0px 8px;
 width: 99px;
 height: 24px;
 border-radius: 0px 4px 4px 0px;
-background: ${({theme}) => theme.blueLight};
+background: ${({ theme }) => theme.blueLight};
 `;
 export const LeftValue = styled.span`
 text-align: center;
@@ -122,7 +116,7 @@ font-style: normal;
 font-weight: bold;
 font-size: 14px;
 line-height: 16px;
-color: ${({theme}) => theme.dark};
+color: ${({ theme }) => theme.dark};
 `;
 export const ButtonIconLeft = styled.button`
 margin-left: 13px;
@@ -132,7 +126,6 @@ align-items: center;
 justify-content: center;
 cursor: pointer;
 `;
-
 export const ModalDivRight = styled.div`
 margin-left: 60px;
 display: flex;
@@ -144,13 +137,13 @@ width: 123px;
 height: 24px;
 box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
 border-radius: 8px;
-background: ${({theme}) => theme.white};
+background: ${({ theme }) => theme.white};
 `;
 export const IconRight = styled.img`
 width: 24px;
 height: 24px;
 border-radius: 4px 0px 0px 4px;
-background: ${({theme}) => theme.white};
+background: ${({ theme }) => theme.white};
 `;
 export const RightValueDiv = styled.div`
 display: flex;
@@ -161,7 +154,7 @@ padding: 0px 8px;
 width: 99px;
 height: 24px;
 border-radius: 0px 4px 4px 0px;
-background: ${({theme}) => theme.blueLight};
+background: ${({ theme }) => theme.blueLight};
 `;
 export const RightValue = styled.span`
 text-align: center;
@@ -171,7 +164,7 @@ font-style: normal;
 font-weight: bold;
 font-size: 14px;
 line-height: 16px;
-color: ${({theme}) => theme.dark};
+color: ${({ theme }) => theme.dark};
 `;
 export const ButtonIconRight = styled.button`
 margin-left: 13px;
@@ -181,16 +174,14 @@ align-items: center;
 justify-content: center;
 cursor: pointer;
 `;
-
 export const BreakLine = styled.div`
 margin-left: 24px;
 margin-top: 60px;
 position: static;
 width: 586px;
 height: 1px;
-background: ${({theme}) => theme.breakLine};
+background: ${({ theme }) => theme.breakLine};
 `;
-
 export const TransactionsData = styled.div`
 display: flex;
 flex-direction: row;
@@ -217,7 +208,7 @@ font-style: normal;
 font-weight: bold;
 font-size: 34px;
 line-height: 39px;
-color: ${({theme}) => theme.green};
+color: ${({ theme }) => theme.green};
 `;
 export const LeftTransactionTitle = styled.span`
 font-family: Ubuntu;
@@ -229,7 +220,6 @@ text-align: left;
 width: 223px;
 height: 16px;
 `;
-
 export const TransactionRight = styled.div`
 display: flex;
 flex-direction: column;
@@ -245,7 +235,7 @@ font-style: normal;
 font-weight: bold;
 font-size: 34px;
 line-height: 39px;
-color: ${({theme}) => theme.orange};
+color: ${({ theme }) => theme.orange};
 `;
 export const RightTransactionTitle = styled.span`
 font-family: Ubuntu;
@@ -256,5 +246,5 @@ line-height: 16px;
 text-align: right;
 width: 223px;
 height: 16px;
-color: ${({theme}) => theme.dark};
+color: ${({ theme }) => theme.dark};
 `;

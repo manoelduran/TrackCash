@@ -10,9 +10,8 @@ position: relative;
 width: 642px;
 height: 236px;
 border-radius: 8px;
-background: ${({theme}) => theme.background};
+background: ${({ theme }) => theme.background};
 `;
-
 export const Header = styled.div`
 display: flex;
 flex-direction: row;
@@ -24,7 +23,6 @@ height: 24px;
 margin-left: 30px;
 top: calc(50% - 24px/2 - 76px);
 `;
-
 export const TitleDiv = styled.div`
 display: flex;
 flex-direction: row;
@@ -34,13 +32,11 @@ position: static;
 width: 202px;
 height: 24px;
 `;
-
 export const Icon = styled.img`
 width: 24px;
 height: 24px;
-background: ${({theme}) => theme.white};
+background: ${({ theme }) => theme.white};
 `;
-
 export const Title = styled.h1`
 font-family: Ubuntu;
 font-style: normal;
@@ -50,17 +46,15 @@ line-height: 16px;
 display: flex;
 align-items: center;
 text-align: center;
-color: ${({theme}) => theme.dark};
+color: ${({ theme }) => theme.dark};
 `;
-
 export const Button = styled.button`
 width: 12px;
 height: 12px;
 border: none;
 cursor: pointer;
-background: ${({theme}) => theme.background};
+background: ${({ theme }) => theme.background};
 `;
-
 export const Rectangles = styled.div`
 display: flex;
 flex-direction: column;
@@ -82,11 +76,10 @@ width: 582px;
 height: 40px;
 border-radius: 8px 8px 0px 0px;
 background: ${({ theme }) => theme.blueDark};
-    `;
-
+`;
 export const NameTag = styled.div`
 color: ${({ theme }) => theme.white};
-    display: flex;
+display: flex;
 align-items: center;
 text-align: center;
 font-family: Ubuntu;
@@ -107,7 +100,7 @@ align-items: center;
 text-align: center;
 `;
 export const SecondRectangle = styled.div`
-    display: flex;
+display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: flex-start;
@@ -115,13 +108,11 @@ padding: 12px;
 position: static;
 width: 582px;
 height: 40px;
-
 background: ${({ theme }) => theme.white};
-    `;
-
+`;
 export const Date = styled.span`
-    color: ${({ theme }) => theme.dark};
-    display: flex;
+color: ${({ theme }) => theme.dark};
+display: flex;
 align-items: center;
 text-align: center;
 font-family: Ubuntu;
@@ -142,7 +133,7 @@ align-items: center;
 text-align: center;
 `;
 export const ThirdRectangle = styled.div`
-    display: flex;
+display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: flex-start;
@@ -152,11 +143,10 @@ width: 582px;
 height: 40px;
 border-radius: 0px 0px 8px 8px ;
 background: ${({ theme }) => theme.greenDark};
-    `;
-
+`;
 export const Total = styled.div`
-    color: ${({ theme }) => theme.white};
-    display: flex;
+color: ${({ theme }) => theme.white};
+display: flex;
 align-items: center;
 text-align: center;
 font-family: Ubuntu;
@@ -166,7 +156,7 @@ font-size: 14px;
 line-height: 16px;
  `;
 export const TotalValue = styled.div`
- color: ${({ theme }) => theme.white};
+color: ${({ theme }) => theme.white};
 font-family: Ubuntu;
 font-style: normal;
 font-weight: bold;

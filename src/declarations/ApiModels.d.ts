@@ -1,6 +1,6 @@
 interface User {
     token: string;
-}
+};
 
 interface Payments {
     data: [
@@ -17,7 +17,7 @@ interface Payments {
             },
         }
     ],
-}
+};
 
 interface Channels {
     balances_total: number,
@@ -25,6 +25,14 @@ interface Channels {
         [key: string]: {
             mkp_total: string;
             mkp_name: string;
-        }
+        },
     },
-}
+};
+
+interface Transferences {
+    transfer_total: string;
+    [key: string]: {
+        transfer_amount: string;
+        transfer_date: string;
+    },
+};

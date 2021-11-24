@@ -18,9 +18,9 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 opacity: 0.9;
-    box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.25);
-    border-radius: 14px 0px 0px 14px;
-    background: ${({ theme }) => theme.white};
+box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.25);
+border-radius: 14px 0px 0px 14px;
+background: ${({ theme }) => theme.white};
 `;
 export const Logo = styled.img`
 position: static;
@@ -67,11 +67,11 @@ height: 45px;
 left: 0px;
 top: 0px;
 &:hover{
-    border: 1px solid ${({theme}) => theme.orange};
-}
+    border: 1px solid ${({ theme }) => theme.orange};
+};
 &:focus{
-   outline: 1px solid ${({theme}) => theme.orange};
-}
+   outline: 1px solid ${({ theme }) => theme.orange};
+};
 `;
 export const PasswordInput = styled.input`
 margin-top: 25px;
@@ -90,11 +90,11 @@ height: 45px;
 left: 0px;
 top: 69px;
 &:hover{
-    border: 1px solid ${({theme}) => theme.orange};
-}
+    border: 1px solid ${({ theme }) => theme.orange};
+};
 &:focus{
-   outline: 1px solid ${({theme}) => theme.orange};
-}
+   outline: 1px solid ${({ theme }) => theme.orange};
+};
 `;
 export const FormButton = styled.button`
 margin-top: 30px;
@@ -115,7 +115,7 @@ cursor: pointer;
 transition: 0.5s;
 &:hover{
     background: ${({ theme }) => darken(0.05, theme.orange)};
-}
+};
 `;
 export const Footer = styled.div`
 width: 302px;
@@ -184,22 +184,23 @@ width: 100%;
 height: 100%;
 background: url("background.jpeg");
 display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.25);
+border-radius: 0px 14px 14px 0px;
 `;
 export const DivContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background:  ${({ theme }) => theme.orange};
-    opacity: 0.9;
-    box-shadow: 0px 0px 14px 7px rgba(0, 0, 0, 0.25);
-    border-radius: 0px 14px 14px 0px;
-`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+background:  ${({ theme }) => theme.orange};
+opacity: 0.9;
+border-radius: 0px 14px 14px 0px;
+`;
 export const TextTitle = styled.h1`
 text-align: center;
 font-weight: 700;

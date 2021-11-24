@@ -26,6 +26,9 @@ interface IAuthContext {
   marketTotalizer: Channels | null;
   setMarketTotalizer: (marketTotalizer: Channels) => void;
   fetchMarketTotalizer: () => Promise<Channels | null>;
+  transferences: Transferences | null;
+  setTransferences: (transferences: Transferences) => void;
+  fetchTransferences: () => Promise<Transferences | null>
 }
 
 export const AuthContext = React.createContext<IAuthContext>({} as IAuthContext);
@@ -33,63 +36,77 @@ export const AuthContext = React.createContext<IAuthContext>({} as IAuthContext)
 export function AuthProvider({ children }: AuthProviderProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false)
-  const [currentUser, setCurrentUser] = useState<User | null>(JSON.parse(localStorage.getItem('currentUser')!) ?? null);
-  const [payments, setPayments] = useState<Payments | null>(JSON.parse(localStorage.getItem('payments')!) ?? null)
-  const [marketTotalizer, setMarketTotalizer] = useState<Channels | null>(JSON.parse(localStorage.getItem('marketTotalizer')!) ?? null)
+  const [isLoading, setIsLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [currentUser, setCurrentUser] = useState<User | null>(JSON.parse(localStorage.getItem('currentUser')!) ?? null);
+  const [payments, setPayments] = useState<Payments | null>(JSON.parse(localStorage.getItem('payments')!) ?? null);
+  const [marketTotalizer, setMarketTotalizer] = useState<Channels | null>(JSON.parse(localStorage.getItem('marketTotalizer')!) ?? null);
+  const [transferences, setTransferences] = useState<Transferences | null>(JSON.parse(localStorage.getItem('transferences')!) ?? null);
+
   const fetchCurrentUser = async (username: string, password: string) => {
     const user = await api.login(username, password);
     if (user) {
       localStorage.setItem('currentUser', JSON.stringify(user));
       setCurrentUser(user);
-    }
+    };
     return user;
-  }
+  };
 
   const fetchPayments = async () => {
     if (!currentUser) {
       return null;
-    }
-
+    };
     const payments = await api.getPayments(currentUser.token);
-
     if (payments) {
       localStorage.setItem('payments', JSON.stringify(payments));
       setPayments(payments)
-    }
-
+    };
     return payments;
-  }
+  };
 
   const fetchMarketTotalizer = async () => {
     if (!currentUser) {
       return null;
-    }
-
+    };
     const marketTotalizer = await api.getMarketTotalizers(currentUser.token);
-
     if (marketTotalizer) {
       localStorage.setItem('marketTotalizer', JSON.stringify(marketTotalizer));
       setMarketTotalizer(marketTotalizer)
-    }
-
+    };
     return marketTotalizer;
-  }
+  };
+
+  const fetchTransferences = async () => {
+    if (!currentUser) {
+      return null;
+    };
+    const channel = marketTotalizer?.balances_marketplaces["Amazon"].mkp_name;
+    const transferences = await api.getTransferences(currentUser.token, channel!);
+    if (transferences) {
+      localStorage.setItem('transferences', JSON.stringify(transferences));
+      setTransferences(transferences)
+    };
+    return transferences;
+  };
   const clearCurrentUser = () => {
     localStorage.removeItem('currentUser');
     setCurrentUser(null);
-  }
+  };
 
   function handleOpenModal() {
     setIsModalVisible(true)
-  }
+
+  };
+
   function handleCloseModal() {
     setIsModalVisible(false)
-  }
+  };
 
   return (
     <AuthContext.Provider value={{
+      transferences,
+      setTransferences,
+      fetchTransferences,
       payments,
       setPayments,
       fetchPayments,

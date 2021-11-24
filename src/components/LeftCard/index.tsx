@@ -5,7 +5,6 @@ import {
     HeaderTitle,
     GraphicDiv,
     LegendDiv,
-    Text,
     LeftLegend,
     LeftColor,
     LeftText,
@@ -38,7 +37,7 @@ export function LeftCard() {
                 <HeaderTitle>Desempenho Mensal e Diário</HeaderTitle>
             </Header>
             <GraphicDiv>
-                <MultiAxisLine/>
+                <MultiAxisLine />
                 <LegendDiv>
                     <LeftLegend>
                         <LeftColor />
@@ -52,25 +51,25 @@ export function LeftCard() {
             </GraphicDiv>
             <TaxDiv>
                 <TaxLeft>
-                    <IconLeft  src="/list.png"/>
+                    <IconLeft src="/list.png" />
                     <TaxValueLeft>7,48%</TaxValueLeft>
                     <TaxSpanLeft>Taxa de aprovação dos pedidos</TaxSpanLeft>
                 </TaxLeft>
                 <TaxRight>
-                    <IconRight src="dollar.png"/>
+                    <IconRight src="dollar.png" />
                     <TaxValueRight>7,48%</TaxValueRight>
                     <TaxSpanRight>Taxa de aprovação dos pedidos</TaxSpanRight>
                 </TaxRight>
             </TaxDiv>
-            <BreakLine/>
+            <BreakLine />
             <SecondDiv>
-            <Left>
-                    <IconLeft  src="/list.png"/>
+                <Left>
+                    <IconLeft src="/list.png" />
                     <ValueLeft>98</ValueLeft>
                     <SpanLeft>Pedidos aprovados na data de hoje</SpanLeft>
                 </Left>
                 <Right>
-                    <IconRight src="dollar.png"/>
+                    <IconRight src="dollar.png" />
                     <ValueRight>7,78%</ValueRight>
                     <SpanRight>Total de vendas do dia (R$)</SpanRight>
                 </Right>

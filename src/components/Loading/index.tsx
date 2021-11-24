@@ -1,8 +1,8 @@
 import Loader from "react-loader-spinner";
 import { useTheme } from "styled-components";
-import {Container} from './styles';
+import { Container } from './styles';
 export function Loading() {
-    const theme = useTheme()
+    const theme = useTheme();
     return (
         <Container>
             <Loader
