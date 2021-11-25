@@ -64,7 +64,7 @@ export function RightCard({ name2,
 
     return (
         <>
-            {isModalVisible ? <Modal firstcompany={name1} secondcompany={name2} />
+            {isModalVisible ? <Modal />
                 :
                 <Container>
                     <Header>
@@ -80,7 +80,7 @@ export function RightCard({ name2,
                             <IconLeft src="carrefour.svg" alt={name1} />
                             <LeftValueDiv>
                                 <LeftValue>{value1}</LeftValue>
-                                <ButtonIconLeft onClick={handleOpenModal}>
+                                <ButtonIconLeft onClick={() => handleOpenModal(name1)}>
                                     <AiFillPlusSquare size={13} />
                                 </ButtonIconLeft>
                             </LeftValueDiv>
@@ -89,7 +89,7 @@ export function RightCard({ name2,
                             <IconRight src="carrefour.svg" alt={name2} />
                             <RightValueDiv>
                                 <RightValue>{value2}</RightValue>
-                                <ButtonIconRight onClick={handleOpenModal}>
+                                <ButtonIconRight onClick={() => handleOpenModal(name2)}>
                                     <AiFillPlusSquare size={13} />
                                 </ButtonIconRight>
                             </RightValueDiv>

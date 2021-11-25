@@ -18,7 +18,7 @@ interface IAuthContext {
   clearCurrentUser: () => void;
   isModalVisible: boolean;
   setIsModalVisible: (isModalVisible: boolean) => void;
-  handleOpenModal: () => void;
+  handleOpenModal: (currentChannel: string) => void;
   handleCloseModal: () => void;
   payments: Payments | null;
   setPayments: (payments: Payments) => void;
@@ -29,6 +29,8 @@ interface IAuthContext {
   transferences: Transferences | null;
   setTransferences: (transferences: Transferences) => void;
   fetchTransferences: () => Promise<Transferences | null>
+  channel: string | null;
+  setChannel: (channel: string | null) => void;
 }
 
 export const AuthContext = React.createContext<IAuthContext>({} as IAuthContext);
@@ -37,6 +39,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [channel, setChannel] = useState<string | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(JSON.parse(localStorage.getItem('currentUser')!) ?? null);
   const [payments, setPayments] = useState<Payments | null>(JSON.parse(localStorage.getItem('payments')!) ?? null);
@@ -80,8 +83,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (!currentUser) {
       return null;
     };
-    const channel = marketTotalizer?.balances_marketplaces["Amazon"].mkp_name;
-    const transferences = await api.getTransferences(currentUser.token, channel!);
+    const transferences = await api.getTransferences(currentUser.token, channel);
     if (transferences) {
       localStorage.setItem('transferences', JSON.stringify(transferences));
       setTransferences(transferences)
@@ -93,9 +95,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setCurrentUser(null);
   };
 
-  function handleOpenModal() {
+  function handleOpenModal(currentChannel: string) {
     setIsModalVisible(true)
-
+    setChannel(currentChannel)
   };
 
   function handleCloseModal() {
@@ -104,6 +106,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   return (
     <AuthContext.Provider value={{
+      channel,
+      setChannel,
       transferences,
       setTransferences,
       fetchTransferences,

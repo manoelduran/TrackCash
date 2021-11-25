@@ -38,6 +38,7 @@ height: 24px;
 background: ${({ theme }) => theme.white};
 `;
 export const Title = styled.h1`
+margin-left: 8px;
 font-family: Ubuntu;
 font-style: normal;
 font-weight: bold;

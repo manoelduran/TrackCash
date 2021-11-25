@@ -56,7 +56,7 @@ align-items: center;
 justify-content: center;
 `;
 export const LegendDiv = styled.div`
-margin-top: 30px;
+margin-top: 50px;
 display: flex;
 justify-content: space-evenly;
 align-items: center;

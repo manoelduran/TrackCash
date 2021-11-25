@@ -23,23 +23,19 @@ import {
     TotalValue,
 } from './styles';
 
-interface ModalProps {
-    firstcompany: string;
-    secondcompany: string
-}
-
-export function Modal({ firstcompany, secondcompany }: ModalProps) {
+export function Modal() {
     const {
         handleCloseModal,
         isLoading,
         setIsLoading,
         fetchTransferences,
         transferences,
+        channel
     } = useContext(AuthContext);
     useEffect(() => {
         setIsLoading(true)
         try {
-                fetchTransferences();
+            fetchTransferences();
         } catch (err) {
             alert(err)
         }
@@ -52,9 +48,7 @@ export function Modal({ firstcompany, secondcompany }: ModalProps) {
             <Header>
                 <TitleDiv>
                     <Icon src="/carrefour.svg" />
-                    {firstcompany !== "Carrefour" ? <Title>Repasses da {secondcompany}</Title>
-                        : <Title>Repasses da {firstcompany}</Title>
-                    }
+                    <Title>Repasses da {channel}</Title>
                 </TitleDiv>
                 <Button onClick={handleCloseModal}>
                     <AiOutlineClose />
@@ -67,10 +61,10 @@ export function Modal({ firstcompany, secondcompany }: ModalProps) {
                 </FirstRectangle>
                 {isLoading ? <Loading /> :
                     <>
-                        {transferences && Object.keys(transferences).filter(x => x !== "transfer_total").map((key: string) => (
+                        {transferences && Object.keys(transferences).filter(x => x !== "transfer_total").map((channel: string) => (
                             <SecondRectangle>
-                                <Date>{transferences[key].transfer_date}</Date>
-                                <Value>{transferences[key].transfer_amount}</Value>
+                                <Date>{transferences[channel].transfer_date}</Date>
+                                <Value>{transferences[channel].transfer_amount}</Value>
                             </SecondRectangle>
                         ))}
                     </>
