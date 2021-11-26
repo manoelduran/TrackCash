@@ -86,7 +86,7 @@ export function RightCard({ name2,
                             </LeftValueDiv>
                         </ModalDivLeft>
                         <ModalDivRight>
-                            <IconRight src="carrefour.svg" alt={name2} />
+                            <IconRight src="kabum.png" alt={name2} />
                             <RightValueDiv>
                                 <RightValue>{value2}</RightValue>
                                 <ButtonIconRight onClick={() => handleOpenModal(name2)}>

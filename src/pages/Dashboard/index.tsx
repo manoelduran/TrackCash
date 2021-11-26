@@ -4,6 +4,7 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { LeftCard } from "../../components/LeftCard";
 import { RightCard } from "../../components/RightCard";
+import { Schedule } from "../../components/Schedule";
 import { AuthContext } from "../../contexts/AuthContext";
 import {
     Container,
@@ -18,7 +19,8 @@ export function Dashboard() {
         payments,
         fetchMarketTotalizer,
         marketTotalizer,
-        fetchPayments
+        fetchPayments,
+        isCalendarVisible
     } = useContext(AuthContext);
     useEffect(() => {
         if (!currentUser) {
@@ -35,7 +37,9 @@ export function Dashboard() {
     }, [])
     return (
         <Container>
-            <Header />
+            <Header  />
+            {isCalendarVisible ? <Schedule/> :
+            <>
             <CardDiv>
                 <LeftCard />
                 {payments &&
@@ -60,6 +64,8 @@ export function Dashboard() {
                     </>
                 }
             </CardDiv>
+            </>
+            }
             <FooterDiv>
                 <Footer />
             </FooterDiv>

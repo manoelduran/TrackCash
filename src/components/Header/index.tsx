@@ -10,13 +10,14 @@ import {
     Title,
     Text,
     ButtonCalendar,
-    Calendar,
+    CalendarIcon,
     Button
 } from './styles';
 
+
 export function Header() {
     const navigate = useNavigate();
-    const { clearCurrentUser } = useContext(AuthContext);
+    const { clearCurrentUser, handleOpenCalendar } = useContext(AuthContext);
     function handleLogout() {
         clearCurrentUser();
         navigate('/');
@@ -34,9 +35,9 @@ export function Header() {
                     <Title>Tabela de Recorrências de Pagamentos</Title>
                     <Text>Página de Recorrências de pagamentos referentes ao mês atual</Text>
                 </TextContainer>
-                <ButtonCalendar>
-                    <Calendar src="/calendar.png" alt="Calendar" />
-                    Agosto 2021
+                <ButtonCalendar onClick={() => handleOpenCalendar()}>
+                    <CalendarIcon src="/calendar.png" alt="Calendar" />
+                    Seleciona a data
                 </ButtonCalendar>
             </OrangeContainer>
         </>

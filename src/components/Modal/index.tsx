@@ -27,27 +27,22 @@ export function Modal() {
     const {
         handleCloseModal,
         isLoading,
-        setIsLoading,
         fetchTransferences,
         transferences,
         channel
     } = useContext(AuthContext);
     useEffect(() => {
-        setIsLoading(true)
         try {
             fetchTransferences();
         } catch (err) {
             alert(err)
-        }
-        finally {
-            setIsLoading(false)
         }
     }, []);
     return (
         <Container>
             <Header>
                 <TitleDiv>
-                    <Icon src="/carrefour.svg" />
+                  {channel === "KaBuM!" ?   <Icon src="/kabum.png" /> :   <Icon src="/carrefour.svg" />}
                     <Title>Repasses da {channel}</Title>
                 </TitleDiv>
                 <Button onClick={handleCloseModal}>

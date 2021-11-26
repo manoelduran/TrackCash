@@ -80,7 +80,7 @@ transition: 0.5s;
     background:  ${({ theme }) => darken(0.1, theme.white)};
 }
 `;
-export const Calendar = styled.img`
+export const CalendarIcon = styled.img`
 width: 16px;
 height: 16px;
 `;

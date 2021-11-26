@@ -31,6 +31,14 @@ interface IAuthContext {
   fetchTransferences: () => Promise<Transferences | null>
   channel: string | null;
   setChannel: (channel: string | null) => void;
+  isCalendarVisible: boolean;
+  setIsCalendarVisible: (isCalendarVisible: boolean) => void;
+  handleOpenCalendar: ( ) => void;
+  handleCloseCalendar: () => void;
+  date_start: string | null ;
+  setDate_start: (date_start: string | null ) => void;
+  date_end: string | null;
+  setDate_end: (date_end: string | null) => void;
 }
 
 export const AuthContext = React.createContext<IAuthContext>({} as IAuthContext);
@@ -40,7 +48,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [channel, setChannel] = useState<string | null>(null);
+  const [date_start, setDate_start] = useState<string | null >("01-06-2020");
+  const [date_end, setDate_end] = useState<string | null >("01-12-2021");
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(JSON.parse(localStorage.getItem('currentUser')!) ?? null);
   const [payments, setPayments] = useState<Payments | null>(JSON.parse(localStorage.getItem('payments')!) ?? null);
   const [marketTotalizer, setMarketTotalizer] = useState<Channels | null>(JSON.parse(localStorage.getItem('marketTotalizer')!) ?? null);
@@ -59,7 +70,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (!currentUser) {
       return null;
     };
-    const payments = await api.getPayments(currentUser.token);
+    const payments = await api.getPayments(currentUser.token, date_start, date_end);
     if (payments) {
       localStorage.setItem('payments', JSON.stringify(payments));
       setPayments(payments)
@@ -71,7 +82,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (!currentUser) {
       return null;
     };
-    const marketTotalizer = await api.getMarketTotalizers(currentUser.token);
+    const marketTotalizer = await api.getMarketTotalizers(currentUser.token, date_start, date_end);
     if (marketTotalizer) {
       localStorage.setItem('marketTotalizer', JSON.stringify(marketTotalizer));
       setMarketTotalizer(marketTotalizer)
@@ -80,14 +91,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const fetchTransferences = async () => {
-    if (!currentUser) {
-      return null;
-    };
-    const transferences = await api.getTransferences(currentUser.token, channel);
-    if (transferences) {
-      localStorage.setItem('transferences', JSON.stringify(transferences));
-      setTransferences(transferences)
-    };
+    setIsLoading(true)
+    try {
+      if (!currentUser) {
+        return null;
+      };
+      const transferences = await api.getTransferences(currentUser.token, channel, date_start, date_end);
+      if (transferences) {
+        localStorage.setItem('transferences', JSON.stringify(transferences));
+        setTransferences(transferences)
+      };
+    } catch (err) {
+      alert(err)
+    } finally {
+      setIsLoading(false)
+    }
     return transferences;
   };
   const clearCurrentUser = () => {
@@ -104,8 +122,24 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setIsModalVisible(false)
   };
 
+  function handleOpenCalendar() {
+    setIsCalendarVisible(true)
+  };
+
+  function handleCloseCalendar() {
+    setIsCalendarVisible(false)
+  };
+
   return (
     <AuthContext.Provider value={{
+      date_start,
+      date_end,
+      setDate_start,
+      setDate_end,
+      handleCloseCalendar,
+      handleOpenCalendar,
+      isCalendarVisible,
+      setIsCalendarVisible,
       channel,
       setChannel,
       transferences,
