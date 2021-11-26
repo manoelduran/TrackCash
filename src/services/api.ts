@@ -34,6 +34,9 @@ export async function getPayments(token: string, date_start: string | null , dat
 };
 
 export async function getMarketTotalizers(token: string, date_start: string | null , date_end: string | null ): Promise<Channels | null> {
+    if(!date_start && !date_end){
+        return null
+    }
     const result = await client.get(`/api/auth/payments/mkptotalizers`, {
         headers: {
             token,
@@ -51,6 +54,9 @@ export async function getMarketTotalizers(token: string, date_start: string | nu
 };
 
 export async function getTransferences(token: string, channel: string | null, date_start: string | null , date_end: string | null ): Promise<Transferences | null> {
+    if(!date_start && !date_end){
+        return null
+    }
     const result = await client.get(`/api/auth/payments/mkptotalizers`, {
         headers: {
             token,

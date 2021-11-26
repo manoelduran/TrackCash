@@ -60,6 +60,8 @@ export function RightCard({ name2,
     withdrawals }: RightCardProps) {
     const { handleOpenModal,
         isModalVisible,
+        date_start,
+        date_end,
     } = useContext(AuthContext);
 
     return (

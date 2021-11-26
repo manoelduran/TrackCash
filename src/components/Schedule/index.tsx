@@ -1,8 +1,8 @@
 import {Container, ButtonSelect} from './styles';
 import { DateRangePicker } from "react-date-range";
 import { useContext, useState } from 'react';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'react-date-range/dist/styles.css'; 
+import 'react-date-range/dist/theme/default.css'; 
 import { AuthContext } from '../../contexts/AuthContext';
 
 export function Schedule() {
@@ -21,7 +21,7 @@ export function Schedule() {
     return (
         <Container>
            <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
-            <ButtonSelect onClick={handleCloseCalendar}>Selecionar intervalo</ButtonSelect>
+            <ButtonSelect onClick={() => handleCloseCalendar(startDate, endDate)}>Selecionar intervalo</ButtonSelect>
         </Container>
     );
 }

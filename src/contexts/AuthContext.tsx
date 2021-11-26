@@ -33,10 +33,10 @@ interface IAuthContext {
   setChannel: (channel: string | null) => void;
   isCalendarVisible: boolean;
   setIsCalendarVisible: (isCalendarVisible: boolean) => void;
-  handleOpenCalendar: ( ) => void;
-  handleCloseCalendar: () => void;
-  date_start: string | null ;
-  setDate_start: (date_start: string | null ) => void;
+  handleOpenCalendar: () => void;
+  handleCloseCalendar: (startDate: Date, endDate: Date) => void;
+  date_start: string | null;
+  setDate_start: (date_start: string | null) => void;
   date_end: string | null;
   setDate_end: (date_end: string | null) => void;
 }
@@ -48,8 +48,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [channel, setChannel] = useState<string | null>(null);
-  const [date_start, setDate_start] = useState<string | null >("01-06-2020");
-  const [date_end, setDate_end] = useState<string | null >("01-12-2021");
+  const [date_start, setDate_start] = useState<string | null>(JSON.parse(localStorage.getItem('datestart')!) ?? null);
+  const [date_end, setDate_end] = useState<string | null>(JSON.parse(localStorage.getItem('dateend')!) ?? null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(JSON.parse(localStorage.getItem('currentUser')!) ?? null);
@@ -92,10 +92,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const fetchTransferences = async () => {
     setIsLoading(true)
+    if (!currentUser) {
+      return null;
+    };
     try {
-      if (!currentUser) {
-        return null;
-      };
       const transferences = await api.getTransferences(currentUser.token, channel, date_start, date_end);
       if (transferences) {
         localStorage.setItem('transferences', JSON.stringify(transferences));
@@ -126,8 +126,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setIsCalendarVisible(true)
   };
 
-  function handleCloseCalendar() {
+  function handleCloseCalendar(startDate: Date | null, endDate: Date | null) {
     setIsCalendarVisible(false)
+    localStorage.setItem('datestart', JSON.stringify(startDate));
+    localStorage.setItem('dateend', JSON.stringify(endDate));
+    setDate_start(String(startDate).slice(0, 10).split("-").reverse().join("-"))
+    setDate_end(String(endDate).slice(0, 10).split("-").reverse().join("-"))
+    window.location.reload()
   };
 
   return (
